@@ -86,11 +86,19 @@ public class CookieCutterParams {
         Path path;
         Paint paint;
 
+        Path strokePath;
+        Paint strokePaint;
+
         public HoleParams() {
             setPath();
 
             paint = new Paint();
             paint.setColor(Color.parseColor("#AA000000"));
+
+            strokePaint = new Paint();
+            strokePaint.setColor(Color.WHITE);
+            strokePaint.setStyle(Paint.Style.STROKE);
+            strokePaint.setStrokeWidth(1);
         }
 
         private void setPath() {
@@ -98,6 +106,10 @@ public class CookieCutterParams {
             path.setFillType(Path.FillType.EVEN_ODD);
             path.addRect(0, 0, width, height, Path.Direction.CW);
             path.addCircle(circle.getCx(), circle.getCy(), circle.getRadius(), Path.Direction.CW);
+
+            strokePath = new Path();
+            strokePath.setFillType(Path.FillType.EVEN_ODD);
+            strokePath.addCircle(circle.getCx(), circle.getCy(), circle.getRadius(), Path.Direction.CW);
         }
     }
 

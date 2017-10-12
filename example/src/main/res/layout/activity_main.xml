@@ -8,5 +8,6 @@
         android:id="@+id/ivCookieCutter"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:scaleType="centerCrop"
         android:src="@drawable/img3"/>
 </RelativeLayout>

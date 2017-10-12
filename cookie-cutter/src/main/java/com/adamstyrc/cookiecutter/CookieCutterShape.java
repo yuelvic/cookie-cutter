@@ -7,5 +7,6 @@ public enum CookieCutterShape {
 
     CIRCLE,
     HOLE,
-    SQUARE;
+    SQUARE,
+    NONE
 }

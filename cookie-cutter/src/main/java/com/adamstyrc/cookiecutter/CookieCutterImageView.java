@@ -67,7 +67,9 @@ public class CookieCutterImageView extends ImageView {
     private void onImageLoaded() {
         cookieCutterParams.updateWithView(getWidth(), getHeight());
         setImageCentered();
-        setOnTouchListener(new CookieCutterTouchListener(cookieCutterParams, getImageMatrix()));
+
+        if (cookieCutterParams.getShape() != CookieCutterShape.NONE)
+            setOnTouchListener(new CookieCutterTouchListener(cookieCutterParams, getImageMatrix()));
     }
 
     private void setImageCentered() {
@@ -115,7 +117,12 @@ public class CookieCutterImageView extends ImageView {
                 CookieCutterParams.HoleParams hole = cookieCutterParams.getHoleParams();
                 paint = hole.paint;
                 Path path = hole.path;
+
+                Paint strokePaint = hole.strokePaint;
+                Path strokePath = hole.strokePath;
+
                 canvas.drawPath(path, paint);
+                canvas.drawPath(strokePath, strokePaint);
                 break;
 
             case SQUARE:
@@ -190,6 +197,6 @@ public class CookieCutterImageView extends ImageView {
     private void setDefaultRadius() {
         Point screenSize = ImageUtils.getScreenSize(getContext());
         int minScreenSize = Math.min(screenSize.x, screenSize.y);
-        cookieCutterParams.setCircleRadius((int) (minScreenSize * 0.4f));
+        cookieCutterParams.setCircleRadius((int) (minScreenSize * 0.45f));
     }
 }

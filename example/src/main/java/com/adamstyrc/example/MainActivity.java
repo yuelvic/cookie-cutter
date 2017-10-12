@@ -55,9 +55,8 @@ public class MainActivity extends AppCompatActivity {
                 ivCrop.getParams().setShape(CookieCutterShape.HOLE);
                 break;
             case 4:
-                ivCrop.getParams().setShape(CookieCutterShape.SQUARE);
+                ivCrop.getParams().setShape(CookieCutterShape.NONE);
                 break;
-
         }
         ivCrop.invalidate();
 
@@ -74,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
             case 1:
                 try {
                     Uri imageUri = data.getData();
-//                    ivCrop.setImageURI(imageUri);
+                    ivCrop.setImageURI(imageUri);
 
                     Point screenSize = ImageUtils.getScreenSize(this);
                     Bitmap scaledBitmap = ImageUtils.decodeUriToScaledBitmap(this, imageUri, screenSize.x, screenSize.y);
